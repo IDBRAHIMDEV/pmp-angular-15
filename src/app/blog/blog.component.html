@@ -1,20 +1,47 @@
 
+<div class="row my-4">
+  <div class="col-md-6">
+    <h1>Blog</h1>
+  </div>
+  <div class="col-md-6 text-end">
+    <button class="btn" [ngClass]="{'btn-primary': !showForm, 'btn-warning': showForm}" (click)="toggleForm()">
+      {{ showForm ? 'Hide' : 'Show' }}
+    </button>
+  </div>
+</div>
 
-<app-navbar></app-navbar>
-<div class="container">
+<div class="row my-3" *ngIf="showForm">
+  <div class="col-md-4 mx-auto">
 
-  <div class="row">
-    <div class="col-8">
-      <app-content></app-content>
-      
+    <div class="form-group my-2">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="myPost.title">
     </div>
-    <div class="col-4">
-      <app-sidebar></app-sidebar>
+
+    <div class="form-group my-2">
+      <label for="body">Body</label>
+      <input type="text" class="form-control" id="body" [(ngModel)]="myPost.body">
+    </div>
+
+    <div class="d-grid my-2">
+      <button (click)="savePost()" class="btn btn-success">New post</button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-      <app-footer></app-footer>
-    </div>
+</div>
+
+<div class="row my-3">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li *ngFor="let post of posts" class="list-group-item">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+        <div class="my-3 text-end">
+          <button class="btn btn-warning me-1">Edit</button>
+          <ng-container *ngIf="post.id">
+            <button class="btn btn-danger" (click)="destroyPost(post.id)">Delete</button>
+          </ng-container>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

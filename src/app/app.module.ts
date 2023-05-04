@@ -10,8 +10,11 @@ import { ContentComponent } from './components/content/content.component';
 import { TableComponent } from './components/table/table.component';
 import { FormComponent } from './components/form/form.component';
 import { BlogComponent } from './blog/blog.component';
-import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
+
+//Import a modules
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { CardComponent } from './card/card.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,8 +30,9 @@
         <app-card 
             [id]="course.id" 
             [title]="course.title" 
-            [price]="course.price"
+            [body]="course.body"
             (deleteCourseById)="destroyCourse($event)"
+            (updateCourse)="updateCourseFromChild($event)"
             >
         </app-card>
     </div>

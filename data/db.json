@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "title": "Learn Angular",
+      "body": "Learn angular frontend app",
+      "id": 1
+    },
+    {
+      "title": "Learn GraphQl",
+      "body": "the alternative of RestAPI",
+      "id": 4
+    }
+  ],
+  "courses": []
+}

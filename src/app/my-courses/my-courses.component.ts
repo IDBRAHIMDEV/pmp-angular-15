@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CourseService } from './../services/course.service';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -6,7 +7,15 @@ import Swal from 'sweetalert2';
   templateUrl: './my-courses.component.html',
   styleUrls: ['./my-courses.component.css']
 })
-export class MyCoursesComponent {
+export class MyCoursesComponent implements OnInit {
+
+  constructor(private courseService: CourseService) {}
+
+  ngOnInit(): void {
+      this.courseService.getAllCourses().subscribe((response: any) => {
+        this.courses = response
+      })
+  }
 
   edit = false
 
@@ -15,15 +24,10 @@ export class MyCoursesComponent {
   myCourse: any = {
     id: 0,
     title: '',
-    price: 0
+    body: ""
   }
 
-  courses: any[] = [
-    {id: 1, title: "Spring", price: 12},
-    {id: 2, title: "Laravel", price: 42},
-    {id: 3, title: "Asp dotnet", price: 65},
-    {id: 4, title: "Symfony", price: 145}
-  ];
+  courses: any[] = [];
 
   addCourse() {
 
@@ -33,7 +37,7 @@ export class MyCoursesComponent {
     this.myCourse = {
       id: 0,
       title: '',
-      price: 0
+      body: ''
     }
   }
 
@@ -76,11 +80,15 @@ export class MyCoursesComponent {
     this.myCourse = {
       id: 0,
       title: '',
-      price: 0
+      body: ''
     }
   }
 
   destroyCourse(event: any) {
     this.deleteCourse(event.id)
+  }
+
+  updateCourseFromChild(event: any) {
+    this.editCourse(event.course)
   }
 }

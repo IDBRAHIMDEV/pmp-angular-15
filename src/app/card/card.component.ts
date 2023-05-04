@@ -8,12 +8,25 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class CardComponent {
 @Input() id: number = 0 
 @Input() title: string = ""
-@Input() price: number = 0 
+@Input() body: string = "" 
 
 @Output() deleteCourseById = new EventEmitter()
+@Output() updateCourse = new EventEmitter()
 
 deleteCourse(id: number) {
    this.deleteCourseById.emit({id: id, message: 'I want to delete this course using the ID daddy'})
+}
+
+editCourse() {
+  let myCourse = {
+    course: {
+      id: this.id,
+      title: this.title,
+      body: this.body
+    },
+    message: 'delete course'
+  }
+  this.updateCourse.emit(myCourse)
 }
 
 }
