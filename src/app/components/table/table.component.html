@@ -5,23 +5,15 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Price</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Mohamed</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Kamal</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Walid</td>
+        <tr *ngFor="let item of data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.price }}</td>
             <td></td>
         </tr>
     </tbody>

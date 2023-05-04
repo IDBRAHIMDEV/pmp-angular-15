@@ -11,6 +11,7 @@ import { TableComponent } from './components/table/table.component';
 import { FormComponent } from './components/form/form.component';
 import { BlogComponent } from './blog/blog.component';
 import { FormsModule } from '@angular/forms';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     ContentComponent,
     TableComponent,
     FormComponent,
-    BlogComponent
+    BlogComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

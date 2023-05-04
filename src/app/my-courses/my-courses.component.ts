@@ -26,7 +26,8 @@ export class MyCoursesComponent {
   ];
 
   addCourse() {
-    //this.courses.unshift(this.myCourse)
+
+    this.courses.unshift(this.myCourse)
     this.courses = [this.myCourse, ...this.courses]
 
     this.myCourse = {
@@ -77,5 +78,9 @@ export class MyCoursesComponent {
       title: '',
       price: 0
     }
+  }
+
+  destroyCourse(event: any) {
+    this.deleteCourse(event.id)
   }
 }
