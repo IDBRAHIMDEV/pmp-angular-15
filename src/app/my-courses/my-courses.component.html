@@ -1,0 +1,28 @@
+<p>my-courses works!</p>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, consequatur repellendus. Distinctio praesentium modi suscipit voluptatum consequatur. Ullam omnis illum magnam atque voluptas dolor. Praesentium consequatur unde tempora nihil vero quam deserunt iusto impedit velit labore dolores deleniti iure voluptates autem similique, reiciendis fugiat perferendis sint quae fugit? Obcaecati accusamus veritatis culpa, numquam officiis necessitatibus ducimus esse quae molestias possimus amet repellat pariatur, sunt maiores? Perferendis, non excepturi. Quibusdam et iure reprehenderit tempore nihil dicta voluptas perferendis assumenda officiis ad ipsa nisi deserunt vel dolores, dolorem vitae, deleniti repellendus velit, debitis fuga dignissimos quod. Quas, facere. Dolor ut soluta labore?</p>
+
+<input type="number" placeholder="id" [(ngModel)]="myCourse.id">
+<input type="text" placeholder="title" [(ngModel)]="myCourse.title">
+<input type="number" placeholder="price" [(ngModel)]="myCourse.price">
+
+<img [src]="myImage" alt="" srcset="">
+
+<button *ngIf="edit" class="btn btn-info" (click)="updateCourse()">Update</button>
+<button *ngIf="!edit" class="btn btn-danger" (click)="addCourse()">Add</button>
+
+<h2>{{ myCourse }}</h2>
+
+<ul>
+    <li class="list-group-item" [ngClass]="{
+                                            'list-group-item-warning': course.id == myCourse.id && edit == true,
+                                            'list-group-item-success': f,
+                                            'list-group-item-danger': l,
+                                           }" 
+                                           *ngFor="let course of courses; count as c, first as f, last as l, index as i, even as e, odd as o" (click)="editCourse(course)" (dblclick)="deleteCourse(course.id)">
+    count : {{ c }} - index : {{ i }} - first {{ f }} - last : {{ l }} - even : {{ e }} - odd : {{ o }}  {{ course.id }} - {{ course.title }} - {{ course.price }} 
+    </li>
+</ul>
+
+<app-table></app-table>
+
+<button class="btn btn-primary">my button</button>

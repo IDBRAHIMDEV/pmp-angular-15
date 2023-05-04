@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ngpmp';
+  title: string = "PMP";
+
+  getTitle() {
+    return this.title
+  }
 }
