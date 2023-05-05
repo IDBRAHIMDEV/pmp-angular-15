@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class BlogComponent implements OnInit {
 
   showForm: boolean = false
+  edit: boolean = false
 
   ngOnInit(): void {
       this.retreivePosts()
@@ -17,7 +18,8 @@ export class BlogComponent implements OnInit {
 
   myPost: Post = {
     title: '',
-    body: ''
+    body: '',
+    active: true
   }
 
   posts: Post[] = []
@@ -30,7 +32,7 @@ export class BlogComponent implements OnInit {
 
   savePost() {
     this.postService.persistPost(this.myPost).subscribe(response => {
-      this.posts = [response, ...this.posts]
+      this.retreivePosts()
       this.initCourse()
     })
     
@@ -39,10 +41,12 @@ export class BlogComponent implements OnInit {
   initCourse() {
     this.myPost = {
       title: '',
-      body: ''
+      body: '',
+      active: true
     }
 
     this.showForm = false
+    this.edit = false
   }
 
   toggleForm() {
@@ -51,6 +55,42 @@ export class BlogComponent implements OnInit {
 
   destroyPost(id: number) {
     this.postService.deletePost(id).subscribe(() => this.retreivePosts())
+  }
+
+  editPost(post: Post) {
+    this.myPost = post
+    this.showForm = true
+    this.edit = true
+  }
+
+  updatePost() {
+    let { title, body, id, active } = this.myPost;
+
+    if(id) {
+      this.postService.updatePost(id, {title, body, active}).subscribe(response => {
+        this.initCourse()
+      })
+    }
+  }
+
+  changeStatus(id: number | undefined, active: boolean = false) {
+    this.postService.changeStatusPost(id, {active: !active}).subscribe(response => this.retreivePosts())
+  }
+
+  addPost(data: Post) {
+    this.postService.persistPost(data).subscribe(response => {
+      this.retreivePosts()
+      this.initCourse()
+    })
+    
+  }
+
+  submitForm(form: any) {
+    if(form.invalid) {
+      alert('sir tan3ass')
+      return
+    }
+    this.addPost(form.value)
   }
 
 }

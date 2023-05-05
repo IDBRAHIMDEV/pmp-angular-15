@@ -1,14 +1,46 @@
 {
   "posts": [
     {
-      "title": "Learn Angular",
-      "body": "Learn angular frontend app",
-      "id": 1
+      "title": "Learn GraphQl 3",
+      "body": "new body for this post",
+      "active": false,
+      "id": 4
     },
     {
-      "title": "Learn GraphQl",
-      "body": "the alternative of RestAPI",
-      "id": 4
+      "title": "salam ",
+      "body": "dffgfghthjtyjtyhj",
+      "active": true,
+      "id": 5
+    },
+    {
+      "title": "salam pmp",
+      "body": "sdcsvdfbdfb",
+      "active": true,
+      "id": 6
+    },
+    {
+      "title": "my title",
+      "body": "my body",
+      "active": true,
+      "id": 7
+    },
+    {
+      "title": "",
+      "body": "",
+      "active": true,
+      "id": 8
+    },
+    {
+      "title": "Learn Symf",
+      "body": "learn symfony 6",
+      "active": true,
+      "id": 9
+    },
+    {
+      "title": "Learn Symf",
+      "body": "learn symfony 6",
+      "active": true,
+      "id": 10
     }
   ],
   "courses": []
