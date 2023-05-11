@@ -1,0 +1,25 @@
+
+<div class="row my-5">
+    <div class="col-4 my-5 mx-auto">
+        <p class="my-5 text-center" *ngIf="loading">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </p>
+        <h1 class="my-5 text-center">Sign In</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="signin()">
+            <div class="form-group my-3">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" placeholder="your email" id="email" class="form-control">
+            </div>
+            <div class="form-group my-3">
+                <label for="password">Password</label>
+                <input formControlName="password" type="password" placeholder="your password" id="password" class="form-control">
+            </div>
+            <div class="d-grid my-3">
+                <button [disabled]="loading" class="btn btn-success">Login</button>
+            </div>
+
+            <p class="my-3 text-danger" *ngIf="authError">{{ messageError }}</p>
+        </form>
+    </div>
+</div>

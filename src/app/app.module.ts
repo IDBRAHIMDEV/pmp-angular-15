@@ -22,6 +22,8 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShowPostComponent } from './show-post/show-post.component';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -41,7 +43,9 @@ import { ShowPostComponent } from './show-post/show-post.component';
     AboutComponent,
     HomeComponent,
     PageNotFoundComponent,
-    ShowPostComponent
+    ShowPostComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
