@@ -1,3 +1,4 @@
+import { FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Post } from './../models/post';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
+
+  postForm = new FormGroup({
+    title: new UntypedFormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[a-zA-Z0-9 ]*')]),
+    body: new UntypedFormControl('', Validators.required),
+    active: new UntypedFormControl(true),
+  })
 
   showForm: boolean = false
   edit: boolean = false
@@ -91,6 +98,22 @@ export class BlogComponent implements OnInit {
       return
     }
     this.addPost(form.value)
+  }
+
+  submitMyForm() {
+    if(this.postForm.invalid) {
+      alert('sir tan3ass')
+      return
+    }
+    let myPost: Post = {
+      title: this.myForm.title.value,
+      body: this.myForm.body.value
+    }
+    this.addPost(myPost)
+  }
+
+  get myForm() {
+    return this.postForm.controls
   }
 
 }

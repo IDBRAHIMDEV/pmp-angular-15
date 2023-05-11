@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -13,8 +13,16 @@ import { BlogComponent } from './blog/blog.component';
 import { CardComponent } from './card/card.component';
 
 //Import a modules
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import {RouterModule} from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ShowPostComponent } from './show-post/show-post.component';
+
 
 
 @NgModule({
@@ -28,12 +36,19 @@ import { HttpClientModule } from '@angular/common/http'
     TableComponent,
     FormComponent,
     BlogComponent,
-    CardComponent
+    CardComponent,
+    ContactComponent,
+    AboutComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    ShowPostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,6 +19,10 @@ export class PostService {
         })))
   }
 
+  getOnePost(id: number): Observable<Post> {
+    return this.http.get<Post>(`http://localhost:3000/posts/${id}`)
+  }
+
   persistPost(data: Post): Observable<Post> {
     return this.http.post<Post>('http://localhost:3000/posts', data)
   }

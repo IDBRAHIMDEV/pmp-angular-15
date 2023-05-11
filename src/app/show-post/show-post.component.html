@@ -1,0 +1,14 @@
+
+<div class="row my-4">
+    <div class="col-md-6">
+        <h1>Detail post</h1>
+    </div>
+    <div class="col-md-6 text-end">
+        <a routerLink="/blog" class="btn btn-link">Back to blog</a>
+    </div>
+</div>
+<hr>
+<div class="row mt-4" *ngIf="myPost">
+    <h3 class="my-3">{{ myPost.title }}</h3>
+    <p>{{ myPost.body }}</p>
+</div>
