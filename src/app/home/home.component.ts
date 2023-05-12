@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  price: number = 2.3
+
+  title = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, exercitationem."
+
 }

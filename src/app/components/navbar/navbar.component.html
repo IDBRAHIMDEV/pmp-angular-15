@@ -10,6 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/blog" aria-current="page">Blog <span class="visually-hidden">(current)</span></a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/category">Category</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/about">About</a>
                 </li>
@@ -20,7 +25,12 @@
                
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
+                <li class="nav-item" *ngIf="!user"><a routerLink="/login" class="nav-link">Login</a></li>
+
+                <ng-container *ngIf="user">
+                    <li class="nav-item"><a routerLink="/login" class="nav-link">{{ user }}</a></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" (click)="signout()">logout</button></li>
+                </ng-container>
             </ul>
           
         </div>

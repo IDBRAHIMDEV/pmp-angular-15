@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './services/auth.interceptor';
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,7 @@ import { CardComponent } from './card/card.component';
 
 //Import a modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import {RouterModule} from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
@@ -24,6 +25,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ShowPostComponent } from './show-post/show-post.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AddCategoryComponent } from './pages/add-category/add-category.component';
+import { ListCategoryComponent } from './pages/list-category/list-category.component';
+import { ListPostsComponent } from './pages/list-posts/list-posts.component';
+import { ResumePipe } from './pipes/resume.pipe';
 
 
 
@@ -45,7 +50,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     PageNotFoundComponent,
     ShowPostComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddCategoryComponent,
+    ListCategoryComponent,
+    ListPostsComponent,
+    ResumePipe
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

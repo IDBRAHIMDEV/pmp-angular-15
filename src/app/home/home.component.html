@@ -1,2 +1,6 @@
 <h1 class="my-5">Home page</h1>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, exercitationem.</p>
+<p>{{ title | uppercase | resume: 30  }}</p>
+
+<hr>
+
+<h1>price : {{ price | currency:'GBP':'symbol':'2.3-3' }}</h1>

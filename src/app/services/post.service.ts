@@ -24,7 +24,7 @@ export class PostService {
   }
 
   persistPost(data: Post): Observable<Post> {
-    return this.http.post<Post>('http://localhost:3000/posts', data)
+    return this.http.post<Post>('http://localhost:3000/posts', data, )
   }
 
   deletePost(id: number) {

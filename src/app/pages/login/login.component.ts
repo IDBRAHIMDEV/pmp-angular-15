@@ -43,9 +43,9 @@ export class LoginComponent {
        
         this.storageService.setToken(res.token)
 
+        this.router.navigate(['/dashboard'])
         this.loginForm.reset()
 
-        //this.router.navigate(['/dashboard'])
 
       },
       error: (err: HttpErrorResponse) => {

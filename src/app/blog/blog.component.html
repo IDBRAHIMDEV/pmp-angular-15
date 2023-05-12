@@ -1,74 +1,8 @@
 
-<div class="row my-4">
-  <div class="col-md-6">
-    <h1>Blog</h1>
-  </div>
-  <div class="col-md-6 text-end">
-    <button class="btn" [ngClass]="{'btn-primary': !showForm, 'btn-warning': showForm}" (click)="toggleForm()">
-      {{ showForm ? 'Hide' : 'Show' }}
-    </button>
-  </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Blog Module</h1>
+    </div>
 </div>
 
-<div class="row my-3" *ngIf="showForm">
-  <div class="col-md-4 mx-auto">
-
-   <form [formGroup]="postForm" (submit)="submitMyForm()">
-
-     <div class="form-group my-2">
-       <label for="title">Title</label>
-       <input formControlName="title" type="text" class="form-control" id="title">
-       <div class="alert alert-danger" *ngIf="(postForm.get('title')?.touched || postForm.get('title')?.dirty) && postForm.get('title')?.invalid">
-         <div *ngIf="postForm.get('title')?.errors?.['required']">Title is required !</div>
-         <div *ngIf="postForm.get('title')?.errors?.['minlength']">Title should be more than {{ postForm.get('title')?.errors?.['minlength']['actualLength'] }} / {{ postForm.get('title')?.errors?.['minlength']['requiredLength'] }} caracters</div>
-         <div *ngIf="postForm.get('title')?.errors?.['maxlength']">Title should be less than 10 caracters</div>
-         <div *ngIf="postForm.get('title')?.errors?.['pattern']">Title should have alphanumeric !</div>
-        
-       </div>
-     </div>
-  
-     <div class="form-group my-2">
-       <label for="body">Body</label>
-       <input formControlName="body" type="text" class="form-control" id="body">
-       <div class="alert alert-danger" *ngIf="(postForm.get('body')?.touched || postForm.get('body')?.dirty) && postForm.get('body')?.invalid">
-        <div *ngIf="postForm.get('body')?.errors?.['required']">body is required !</div>
-      </div>
-     </div>
-  
-     <div class="form-check form-check-inline">
-       <input formControlName="active" class="form-check-input" id="active" type="checkbox">
-       <label class="form-check-label" for="active">Active</label>
-     </div>
-      
-  
-     <div class="d-grid my-2">
-       <button [disabled]="postForm.invalid" *ngIf="edit"  class="btn btn-warning">Update post</button>
-       <button [disabled]="postForm.invalid" *ngIf="!edit" class="btn btn-success">New post</button>
-     </div>
-   </form>
-
-    
-  </div>
-</div>
-
-<div class="row my-3">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li *ngFor="let post of posts" class="list-group-item">
-
-        
-          <button class="btn btn-sm mx-3 my-3" [ngClass]="{'btn-success': !post.active, 'btn-danger': post.active}" (click)="changeStatus(post.id, post.active)">{{ post.active ? 'Disable' : 'Enable' }}</button>
-      
-
-        <h3><a [routerLink]="['/blog', post.id]">{{ post.title }}</a></h3>
-        <p>{{ post.body }}</p>
-        <div class="my-3 text-end">
-          <button class="btn btn-warning me-1" (click)="editPost(post)">Edit</button>
-          <ng-container *ngIf="post.id">
-            <button class="btn btn-danger" (click)="destroyPost(post.id)">Delete</button>
-          </ng-container>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
+<router-outlet></router-outlet>

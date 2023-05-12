@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Payload } from './../models/payload';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +9,13 @@ export class StorageService {
 
   constructor() { }
 
+  userName = new BehaviorSubject<string | null>(null)
+
   private readonly APP_TOKEN = "app_token"
+
+  setUserName(user: string | null) {
+    this.userName.next(user)
+  }
 
   setToken(token: string) {
     localStorage.setItem(this.APP_TOKEN, token)
@@ -30,8 +37,21 @@ export class StorageService {
       let payloadEncoded = token.split('.')
 
       if(payloadEncoded.length == 3) {
+
+        try {
+          
+          const decodedPayload = JSON.parse(atob(payloadEncoded[1]))
+  
+          this.setUserName(decodedPayload.name)
+  
+          return decodedPayload
+
+        } catch (error) {
+
+          this.deleteToken()
+          return null
+        }
         
-          return JSON.parse(atob(payloadEncoded[1]))
 
       }else {
         return null
